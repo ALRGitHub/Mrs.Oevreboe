@@ -264,7 +264,7 @@
   <div>
     <div class="eyebrow">Håndrørt, kokt i små satser</div>
     <h1>Syltetøy laget på det som var modent denne uken.</h1>
-    <p>Hver satse er nummerert, datert og koket i små porsjoner — ingen industrijam, bare frukt, bær, sukker og litt tålmodighet.</p>
+    <p>Hver produksjon er nummerert, datert og kokt i små porsjoner — ingen ultraorsessering, bare frukt, bær, sukker og litt tålmodighet.</p>
     <a href="#hylle" class="btn">Se hyllen</a>
     <a href="#om" class="btn ghost" style="margin-left:0.8rem;">Om syltetøyet</a>
   </div>
@@ -302,7 +302,7 @@
 <section class="about" id="om">
   <div>
     <h2>Om syltetøyet</h2>
-    <p>Alt lages hjemme, i små satser på 6–10 glass om gangen, med bær og frukt kjøpt så nært kilden som mulig. Ingen konserveringsmidler utover sukker og sitron — det som ikke selges friskt, fryses ned til neste sats.</p>
+    <p>Alt lages hjemme, i små produksjoner på 6–10 glass om gangen, med frukt og bær dyrket i Øvrebø's hage. Ingen konserveringsmidler utover sukker og  Jam frysepulver — det som ikke selges friskt, fryses ned.</p>
   </div>
   <div>
     <h2>Slik bestiller du</h2>
@@ -311,19 +311,15 @@
 </section>
 
 <footer>
-  Fru Øvrebø’s frukt og bær · Bestillinger sendes til <span class="mono" id="footerEmail">din@epost.no</span> — bytt ut e-posten i koden med din egen.
+  Fru Øvrebø’s frukt og bær · Bestillinger sendes til <span class="mono" id="footerEmail">anneliserabben@gmail.com</span> — bytt ut e-posten i koden med din egen.
 </footer>
 
 <script>
-  const OWNER_EMAIL = "din@epost.no"; // ← bytt ut med din egen e-postadresse
+  const OWNER_EMAIL = "anneliserabben@gmail.com"; // ← bytt ut med din egen e-postadresse
 
   const products = [
-    { id:"bringebar-vanilje", batch:"SATS 014", name:"Bringebær & vaniljestang", desc:"Klassisk, med hele vaniljefrø og litt sitronsyre for balanse.", price:95, color:"#8B2A3C" },
-    { id:"jordbaer-basilikum", batch:"SATS 011", name:"Jordbær & basilikum", desc:"Søtt jordbær møter frisk basilikum — god på skiven, best på ost.", price:105, color:"#C1465B" },
-    { id:"tyttebaer-appelsin", batch:"SATS 019", name:"Tyttebær & appelsin", desc:"Syrlig og vintertett, med revet appelsinskall.", price:90, color:"#7A2032" },
-    { id:"fersken-lavendel", batch:"SATS 007", name:"Fersken & lavendel", desc:"Sommerlig og blomstrete, i begrenset opplag.", price:115, color:"#D98C4A" },
-    { id:"eple-kanel", batch:"SATS 022", name:"Eple & kanel chutney", desc:"Krydret og mørk — perfekt til brunost eller vilt.", price:98, color:"#5C4326" },
-    { id:"morell-mandel", batch:"SATS 016", name:"Morell & mandel", desc:"Mørk sødme med et lite crunch av ristet mandel.", price:120, color:"#6B2737" }
+    { id:"rabarbrasyltetoy", batch:"SATS 001", name:"Rabarbra syltetøy", desc:"Klassisk oppskrift,50% sukker.", price:50, color:"#8B2A3C" },
+    { id:"rabarbrasirup", batch:"SATS 011", name:"Rabarbre sirup", desc:"Nydelig på iskrem.", price:50, color:"#C1465B" },
   ];
 
   const grid = document.getElementById("productGrid");
