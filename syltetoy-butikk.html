@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fru Øvrebø’s frukt og bær</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream: #FBF5E9;
+    --plum: #6B2737;
+    --plum-dark: #4A1B27;
+    --forest: #2F4538;
+    --gold: #C79A2E;
+    --ink: #2B2420;
+    --blush: #F1DFDA;
+    --paper: #FFFDF8;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Work Sans', sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    letter-spacing:-0.01em;
+  }
+  .mono{ font-family:'IBM Plex Mono', monospace; }
+
+  /* ---------- Header ---------- */
+  header{
+    padding:2rem 6vw 1.2rem;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border-bottom:1px solid rgba(43,36,32,0.08);
+  }
+  .brand{
+    font-family:'Fraunces', serif;
+    font-size:1.4rem;
+    font-weight:600;
+    color:var(--plum-dark);
+  }
+  .brand span{ color:var(--gold); }
+  nav a{
+    color:var(--ink);
+    text-decoration:none;
+    margin-left:1.8rem;
+    font-size:0.92rem;
+    font-weight:500;
+    opacity:0.75;
+    transition:opacity .2s;
+  }
+  nav a:hover{ opacity:1; }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    padding:5rem 6vw 4rem;
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    gap:3rem;
+    align-items:center;
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.78rem;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--forest);
+    margin-bottom:1rem;
+  }
+  .hero h1{
+    font-size:clamp(2.4rem, 4.2vw, 3.6rem);
+    line-height:1.05;
+    color:var(--plum-dark);
+    margin:0 0 1.2rem;
+  }
+  .hero p{
+    font-size:1.08rem;
+    line-height:1.6;
+    max-width:38ch;
+    color:rgba(43,36,32,0.82);
+    margin-bottom:2rem;
+  }
+  .btn{
+    display:inline-block;
+    background:var(--plum);
+    color:var(--paper);
+    padding:0.85rem 1.6rem;
+    border-radius:3px;
+    text-decoration:none;
+    font-weight:500;
+    font-size:0.95rem;
+    border:none;
+    cursor:pointer;
+    transition:transform .15s, background .2s;
+  }
+  .btn:hover{ background:var(--plum-dark); transform:translateY(-1px); }
+  .btn.ghost{
+    background:transparent;
+    color:var(--plum-dark);
+    border:1.5px solid var(--plum-dark);
+  }
+  .btn.ghost:hover{ background:var(--plum-dark); color:var(--paper); }
+
+  /* Signature: hand-drawn jar illustration made of CSS */
+  .jar-hero{ display:flex; justify-content:center; }
+  .jar{
+    width:170px;
+    position:relative;
+    animation:settle 5s ease-in-out infinite;
+  }
+  @keyframes settle{
+    0%,100%{ transform:translateY(0); }
+    50%{ transform:translateY(-6px); }
+  }
+  .jar-lid{
+    width:120px; height:34px;
+    background:linear-gradient(180deg,#D8AE3F,var(--gold));
+    border-radius:10px 10px 4px 4px;
+    margin:0 auto;
+    position:relative;
+    box-shadow:inset 0 -4px 0 rgba(0,0,0,0.12);
+  }
+  .jar-body{
+    width:170px; height:190px;
+    background:linear-gradient(180deg, rgba(255,255,255,0.5), rgba(255,255,255,0.15) 20%), var(--plum);
+    border-radius:18px;
+    margin-top:-6px;
+    position:relative;
+    box-shadow:0 18px 30px -12px rgba(74,27,39,0.45);
+    overflow:hidden;
+  }
+  .jar-shine{
+    position:absolute; top:10px; left:16px;
+    width:22px; height:150px;
+    background:rgba(255,255,255,0.25);
+    border-radius:20px;
+    filter:blur(1px);
+  }
+  .jar-label{
+    position:absolute;
+    left:18px; right:18px; top:68px;
+    background:var(--paper);
+    border-radius:2px;
+    padding:0.5rem 0.4rem;
+    text-align:center;
+    box-shadow:0 4px 10px rgba(0,0,0,0.15);
+  }
+  .jar-label .top{ font-family:'IBM Plex Mono'; font-size:0.6rem; letter-spacing:0.08em; color:var(--forest); }
+  .jar-label .name{ font-family:'Fraunces'; font-weight:600; font-size:0.95rem; color:var(--plum-dark); margin-top:2px;}
+
+  /* ---------- Shelf / products ---------- */
+  .shelf-section{ padding:1rem 6vw 5rem; }
+  .shelf-header{
+    display:flex; justify-content:space-between; align-items:baseline;
+    margin-bottom:2rem; flex-wrap:wrap; gap:0.6rem;
+  }
+  .shelf-header h2{ font-size:1.9rem; color:var(--plum-dark); margin:0; }
+  .shelf-header .sub{ color:rgba(43,36,32,0.6); font-size:0.9rem; }
+
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(230px,1fr));
+    gap:1.4rem;
+  }
+  .card{
+    background:var(--paper);
+    border-radius:8px;
+    padding:1.4rem 1.3rem 1.2rem;
+    border:1px solid rgba(43,36,32,0.08);
+    display:flex; flex-direction:column;
+    transition:box-shadow .2s, transform .2s;
+    position:relative;
+  }
+  .card:hover{ box-shadow:0 14px 24px -14px rgba(43,36,32,0.25); transform:translateY(-2px); }
+  .card .batch{
+    font-family:'IBM Plex Mono'; font-size:0.68rem; color:var(--gold);
+    letter-spacing:0.06em; margin-bottom:0.6rem;
+  }
+  .card .swatch{
+    width:100%; height:70px; border-radius:6px; margin-bottom:0.9rem;
+  }
+  .card h3{ font-size:1.15rem; margin:0 0 0.35rem; color:var(--plum-dark); }
+  .card .desc{ font-size:0.88rem; color:rgba(43,36,32,0.7); line-height:1.5; flex-grow:1; margin-bottom:1rem;}
+  .card .row{ display:flex; justify-content:space-between; align-items:center; }
+  .price{ font-family:'IBM Plex Mono'; font-weight:500; color:var(--forest); }
+  .qty{
+    display:flex; align-items:center; gap:0.5rem;
+  }
+  .qty button{
+    width:26px; height:26px; border-radius:50%; border:1px solid rgba(43,36,32,0.2);
+    background:var(--cream); cursor:pointer; font-size:0.9rem; line-height:1;
+  }
+  .qty button:hover{ background:var(--blush); }
+  .qty span{ min-width:1.2rem; text-align:center; font-family:'IBM Plex Mono'; }
+
+  /* ---------- Order panel ---------- */
+  .order-bar{
+    position:sticky; bottom:0;
+    background:var(--plum-dark);
+    color:var(--paper);
+    padding:1rem 6vw;
+    display:flex; justify-content:space-between; align-items:center;
+    flex-wrap:wrap; gap:0.8rem;
+    box-shadow:0 -8px 24px rgba(0,0,0,0.15);
+  }
+  .order-bar .info{ font-size:0.9rem; opacity:0.9; }
+  .order-bar strong{ font-family:'IBM Plex Mono'; color:var(--gold); }
+  .order-bar .btn{ background:var(--gold); color:var(--plum-dark); }
+  .order-bar .btn:hover{ background:#DDBB55; }
+  .order-bar .btn[disabled]{ opacity:0.4; cursor:not-allowed; }
+
+  /* ---------- About ---------- */
+  .about{
+    padding:1rem 6vw 5rem;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:3rem;
+    align-items:start;
+  }
+  .about h2{ color:var(--plum-dark); font-size:1.7rem; margin-top:0;}
+  .about p{ line-height:1.7; color:rgba(43,36,32,0.8); }
+  .divider{
+    height:1px;
+    background:repeating-linear-gradient(90deg, rgba(43,36,32,0.25) 0 6px, transparent 6px 12px);
+    margin:0 6vw 3rem;
+  }
+
+  footer{
+    padding:2rem 6vw 3rem;
+    text-align:center;
+    font-size:0.82rem;
+    color:rgba(43,36,32,0.55);
+  }
+
+  @media (max-width: 780px){
+    .hero{ grid-template-columns:1fr; }
+    .jar-hero{ order:-1; }
+    .about{ grid-template-columns:1fr; gap:1.5rem; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .jar{ animation:none; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">Fru Øvrebø’s <span>frukt og bær</span></div>
+  <nav>
+    <a href="#hylle">Utvalg</a>
+    <a href="#om">Om</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div>
+    <div class="eyebrow">Håndrørt, kokt i små satser</div>
+    <h1>Syltetøy laget på det som var modent denne uken.</h1>
+    <p>Hver satse er nummerert, datert og koket i små porsjoner — ingen industrijam, bare frukt, bær, sukker og litt tålmodighet.</p>
+    <a href="#hylle" class="btn">Se hyllen</a>
+    <a href="#om" class="btn ghost" style="margin-left:0.8rem;">Om syltetøyet</a>
+  </div>
+  <div class="jar-hero">
+    <div class="jar">
+      <div class="jar-lid"></div>
+      <div class="jar-body">
+        <div class="jar-shine"></div>
+        <div class="jar-label">
+          <div class="top">SATS NR. 014</div>
+          <div class="name">Bringebær &amp; vanilje</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="shelf-section" id="hylle">
+  <div class="shelf-header">
+    <h2>Hyllen akkurat nå</h2>
+    <div class="sub">Alle glass er 250 g, med mindre annet er nevnt</div>
+  </div>
+  <div class="grid" id="productGrid"></div>
+</section>
+
+<div class="order-bar">
+  <div class="info">Bestilling: <strong id="orderCount">0 glass</strong> · <strong id="orderSum">0 kr</strong></div>
+  <button class="btn" id="sendOrder" disabled>Send bestilling på e-post</button>
+</div>
+
+<div class="divider" style="margin-top:3rem;"></div>
+
+<section class="about" id="om">
+  <div>
+    <h2>Om syltetøyet</h2>
+    <p>Alt lages hjemme, i små satser på 6–10 glass om gangen, med bær og frukt kjøpt så nært kilden som mulig. Ingen konserveringsmidler utover sukker og sitron — det som ikke selges friskt, fryses ned til neste sats.</p>
+  </div>
+  <div>
+    <h2>Slik bestiller du</h2>
+    <p>Velg antall glass av det du vil ha, trykk "Send bestilling", og det åpner en ferdig utfylt e-post du bare sender inn. Du får svar med henting eller levering avtalt direkte.</p>
+  </div>
+</section>
+
+<footer>
+  Fru Øvrebø’s frukt og bær · Bestillinger sendes til <span class="mono" id="footerEmail">din@epost.no</span> — bytt ut e-posten i koden med din egen.
+</footer>
+
+<script>
+  const OWNER_EMAIL = "din@epost.no"; // ← bytt ut med din egen e-postadresse
+
+  const products = [
+    { id:"bringebar-vanilje", batch:"SATS 014", name:"Bringebær & vaniljestang", desc:"Klassisk, med hele vaniljefrø og litt sitronsyre for balanse.", price:95, color:"#8B2A3C" },
+    { id:"jordbaer-basilikum", batch:"SATS 011", name:"Jordbær & basilikum", desc:"Søtt jordbær møter frisk basilikum — god på skiven, best på ost.", price:105, color:"#C1465B" },
+    { id:"tyttebaer-appelsin", batch:"SATS 019", name:"Tyttebær & appelsin", desc:"Syrlig og vintertett, med revet appelsinskall.", price:90, color:"#7A2032" },
+    { id:"fersken-lavendel", batch:"SATS 007", name:"Fersken & lavendel", desc:"Sommerlig og blomstrete, i begrenset opplag.", price:115, color:"#D98C4A" },
+    { id:"eple-kanel", batch:"SATS 022", name:"Eple & kanel chutney", desc:"Krydret og mørk — perfekt til brunost eller vilt.", price:98, color:"#5C4326" },
+    { id:"morell-mandel", batch:"SATS 016", name:"Morell & mandel", desc:"Mørk sødme med et lite crunch av ristet mandel.", price:120, color:"#6B2737" }
+  ];
+
+  const grid = document.getElementById("productGrid");
+  const qtyState = {};
+
+  function renderProducts(){
+    grid.innerHTML = "";
+    products.forEach(p => {
+      qtyState[p.id] = qtyState[p.id] || 0;
+      const card = document.createElement("div");
+      card.className = "card";
+      card.innerHTML = `
+        <div class="batch">${p.batch}</div>
+        <div class="swatch" style="background:${p.color}"></div>
+        <h3>${p.name}</h3>
+        <div class="desc">${p.desc}</div>
+        <div class="row">
+          <div class="price">${p.price} kr</div>
+          <div class="qty">
+            <button data-action="dec" data-id="${p.id}">−</button>
+            <span id="qty-${p.id}">${qtyState[p.id]}</span>
+            <button data-action="inc" data-id="${p.id}">+</button>
+          </div>
+        </div>
+      `;
+      grid.appendChild(card);
+    });
+  }
+
+  grid.addEventListener("click", (e) => {
+    const btn = e.target.closest("button");
+    if(!btn) return;
+    const id = btn.dataset.id;
+    if(btn.dataset.action === "inc") qtyState[id]++;
+    if(btn.dataset.action === "dec") qtyState[id] = Math.max(0, qtyState[id]-1);
+    document.getElementById(`qty-${id}`).textContent = qtyState[id];
+    updateOrderBar();
+  });
+
+  function updateOrderBar(){
+    let count = 0, sum = 0;
+    products.forEach(p => { count += qtyState[p.id]; sum += qtyState[p.id]*p.price; });
+    document.getElementById("orderCount").textContent = `${count} glass`;
+    document.getElementById("orderSum").textContent = `${sum} kr`;
+    document.getElementById("sendOrder").disabled = count === 0;
+  }
+
+  document.getElementById("sendOrder").addEventListener("click", () => {
+    const lines = products
+      .filter(p => qtyState[p.id] > 0)
+      .map(p => `- ${p.name} x${qtyState[p.id]} (${p.price*qtyState[p.id]} kr)`);
+    const sum = products.reduce((s,p) => s + qtyState[p.id]*p.price, 0);
+    const body = encodeURIComponent(
+      `Hei!\n\nJeg vil gjerne bestille:\n${lines.join("\n")}\n\nTotalt: ${sum} kr\n\nNavn:\nTelefon:\nHenting/levering:\n`
+    );
+    window.location.href = `mailto:${OWNER_EMAIL}?subject=${encodeURIComponent("Bestilling av syltetøy")}&body=${body}`;
+  });
+
+  document.getElementById("footerEmail").textContent = OWNER_EMAIL;
+  renderProducts();
+</script>
+
+</body>
+</html>
